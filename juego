@@ -1,0 +1,59 @@
+#include <iostream>
+#include<ctime>
+#include<cstdio>
+using namespace std;
+#include "menu.h"
+#include "funciones.h"
+int main(){
+    int opcion, puntajeTotal=0, puntuacionJuego, puntajeTotal2=0, puntuacionJuego2, maximosPuntos=0;
+    string nombre1, nombre2;
+
+    while (true){
+    system("cls");
+    if (nombre1!=""){
+    cout << "Jugador 1: " << nombre1 << " | ";
+    if (nombre2!=""){
+        cout << "Jugador 2: " << nombre2 << " | ";
+    }
+    cout << endl;
+    }
+    cout << "---------  |  MENU  |  ---------" << endl;
+    cout << "1. Iniciar modo un jugador" << endl;
+    cout << "2. Iniciar modo dos jugadores" << endl;
+    cout << "3. Iniciar modo simulado" << endl;
+    cout << "4. Mostrar puntuacion mas alta" << endl;
+    cout << "--------------------------------" << endl;
+    cout << "0. SALIR" << endl;
+    cout << endl << "Elija una opcion: ";
+    cin >> opcion;
+    switch (opcion){
+    case 1:
+        CargarNombreJ1 (nombre1);
+        nombre2 = "";
+        if (nombre1!=""){
+            puntuacionJuego = JuegoJ1(puntajeTotal, nombre1, maximosPuntos);
+        }
+        break;
+    case 2:
+        CargarNombreJ1 (nombre1);
+        if (nombre1!=""){
+        CargarNombreJ2 (nombre2);
+
+        }
+        if (nombre1!="" && nombre2!=""){
+            puntuacionJuego = JuegoJ2(puntajeTotal, nombre1, puntajeTotal2, nombre2, maximosPuntos);
+        }
+        break;
+    case 3:
+        CargarNombreJ1 (nombre1);
+        ModoSimulado(nombre1);
+        break;
+    case 4:
+        mostrarPuntuacionMax (maximosPuntos);
+        break;
+    case 0:
+        return 0;
+    }
+    }
+    return 0;
+}
